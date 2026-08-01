@@ -12,8 +12,8 @@ const CIUDAD_LIMA = 1;
 // Datos de ejemplo: "feed" y "recuerdos" aun no tienen endpoint en el backend
 // (quedaron como dominio de referencia) - se reemplazan por fetch real cuando existan.
 const LANZAMIENTOS_DEMO: Lanzamiento[] = [
-    { id: "1", bandaNombre: "La Colera", titulo: "Cielo de concreto", tipo: "SINGLE", publicadoHace: "hace 2h" },
-    { id: "2", bandaNombre: "Rio Sagrado", titulo: "Altiplano", tipo: "EP", publicadoHace: "hace 1d" }
+    { id: "1", bandaNombre: "Suerte Campeón", titulo: "Suerte Campeón", tipo: "ALBUM", publicadoHace: "hace 1m" },
+    { id: "2", bandaNombre: "Mundaka", titulo: "Sonata Tropical del Ártico", tipo: "ALBUM", publicadoHace: "hace 1y" }
 ];
 
 const RECUERDOS_DEMO: RecuerdoFoto[] = [
