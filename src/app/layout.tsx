@@ -9,7 +9,7 @@ const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 const mono = Space_Mono({ weight: "400", subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "SCena Peru",
+  title: "SCENA PE",
   description: "Bandas, tocadas y recuerdos de la escena musical peruana"
 };
 

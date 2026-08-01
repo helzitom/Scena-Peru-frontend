@@ -9,7 +9,7 @@ export default function LandingPage() {
   return (
     <main className={`${workSans.className} bg-noche text-crema min-h-screen overflow-hidden`}>
       <header className="relative z-10 flex items-center justify-between px-6 md:px-12 py-6">
-        <span className={`${bungee.className} text-xl text-amarillo`}>ESCENA PERÚ</span>
+        <span className={`${bungee.className} text-xl text-amarillo`}>SCENA PERÚ</span>
         <Link
           href="/login"
           className={`${bungee.className} text-xs md:text-sm bg-fucsia text-crema px-4 py-2 rounded-full`}
@@ -47,14 +47,14 @@ export default function LandingPage() {
           </h1>
           <p className="mt-6 max-w-md mx-auto text-sm md:text-base text-crema/80">
             El punto de encuentro de bandas, fans, organizadores y locales del Perú.
-            Tocadas confirmadas, lanzamientos y recuerdos de cada noche, en un solo lugar.
+            Tocadas confirmadas, horarios, lanzamientos y fotasos de cada noche, en un solo lugar.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link href="/login" className={`${bungee.className} text-sm bg-amarillo text-noche px-6 py-3 rounded-full`}>
               Crear cuenta gratis
             </Link>
             <Link href="/feed" className={`${bungee.className} text-sm border-2 border-crema px-6 py-3 rounded-full`}>
-              Ver la escena
+              Ver eventos
             </Link>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function LandingPage() {
       <section className="relative z-10 px-6 md:px-12 pb-20 grid gap-4 md:grid-cols-3">
         {[
           { color: "bg-fucsia", title: "Bandas", texto: "Sube tu música, avisa tus tocadas y arma tu cartel." },
-          { color: "bg-cian", title: "Fans", texto: "Descubre shows cerca tuyo y guarda los recuerdos de cada noche." },
+          { color: "bg-cian", title: "Seguidores", texto: "Descubre tocadas cerca de ti y guarda los recuerdos de cada noche." },
           { color: "bg-naranja", title: "Organizadores", texto: "Arma festivales, invita bandas y llena tu local." }
         ].map((item) => (
           <div key={item.title} className={`${item.color} rounded-3xl p-6 text-noche`}>
@@ -74,7 +74,7 @@ export default function LandingPage() {
       </section>
 
       <footer className="relative z-10 px-6 md:px-12 py-8 text-center text-crema/50 text-xs">
-        Hecho para la escena musical peruana.
+        SCena Perú © 2026. Todos los derechos reservados. <br />
       </footer>
     </main>
   );
