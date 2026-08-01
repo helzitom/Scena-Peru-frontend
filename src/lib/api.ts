@@ -26,3 +26,27 @@ export async function crearTocada(payload: CrearTocadaPayload): Promise<TocadaRe
   });
   return manejarRespuesta<TocadaResponse>(res);
 }
+
+import { RegistroPayload, LoginPayload, UsuarioResponse } from "./types";
+
+// Conectado a POST /api/usuarios/registro (ya existe en tu backend)
+export async function registrarUsuario(payload: RegistroPayload): Promise<UsuarioResponse> {
+  const res = await fetch(`${API_URL}/api/usuarios/registro`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+  return manejarRespuesta<UsuarioResponse>(res);
+}
+
+// TODO backend: este endpoint aun no existe. "usuarios" necesita Spring
+// Security + JWT (ver README del backend). El frontend ya queda listo
+// para consumirlo apenas exista.
+export async function iniciarSesion(payload: LoginPayload): Promise<{ token: string }> {
+  const res = await fetch(`${API_URL}/api/usuarios/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+  return manejarRespuesta<{ token: string }>(res);
+}

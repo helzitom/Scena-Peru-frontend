@@ -13,7 +13,7 @@ export default function TabNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex border-b border-sand/60 text-sm">
+    <nav className="flex border-b border-sand/60 text-sm md:hidden">
       {TABS.map((tab) => {
         const activo = pathname === tab.href;
         return (
