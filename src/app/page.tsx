@@ -10,10 +10,7 @@ export default function LandingPage() {
     <main className={`${workSans.className} bg-noche text-crema min-h-screen overflow-hidden`}>
       <header className="relative z-10 flex items-center justify-between px-6 md:px-12 py-6">
         <span className={`${bungee.className} text-xl text-amarillo`}>SCENA PERÚ</span>
-        <Link
-          href="/login"
-          className={`${bungee.className} text-xs md:text-sm bg-fucsia text-crema px-4 py-2 rounded-full`}
-        >
+        <Link href="/login" className={`${bungee.className} text-xs md:text-sm bg-fucsia text-crema px-4 py-2 rounded-full`}>
           Entrar
         </Link>
       </header>
