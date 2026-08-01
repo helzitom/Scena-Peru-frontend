@@ -1,78 +1,81 @@
-import Header from "@/components/Header";
-import TabNav from "@/components/TabNav";
-import BottomNav from "@/components/BottomNav";
-import LanzamientoCard from "@/components/LanzamientoCard";
-import TocadaCard from "@/components/TocadaCard";
-import RecuerdosGrid from "@/components/RecuerdosGrid";
-import { listarTocadasPorCiudad } from "@/lib/api";
-import { Lanzamiento, RecuerdoFoto } from "@/lib/types";
+import Link from "next/link";
+import { Bungee, Work_Sans } from "next/font/google";
 
-const CIUDAD_LIMA = 1;
+const bungee = Bungee({ weight: "400", subsets: ["latin"] });
+const workSans = Work_Sans({ subsets: ["latin"], weight: ["400", "500", "700"] });
+const RAYOS = Array.from({ length: 24 });
 
-// Datos de ejemplo: "feed" y "recuerdos" aun no tienen endpoint en el backend
-// (quedaron como dominio de referencia) - se reemplazan por fetch real cuando existan.
-const LANZAMIENTOS_DEMO: Lanzamiento[] = [
-  { id: "1", bandaNombre: "La Colera", titulo: "Cielo de concreto", tipo: "SINGLE", publicadoHace: "hace 2h" },
-  { id: "2", bandaNombre: "Rio Sagrado", titulo: "Altiplano", tipo: "EP", publicadoHace: "hace 1d" }
-];
-
-const RECUERDOS_DEMO: RecuerdoFoto[] = [
-  { id: "1", fotoUrl: "", tocadaTitulo: "Noche subte vol. 3" },
-  { id: "2", fotoUrl: "", tocadaTitulo: "Fest. Barranco" },
-  { id: "3", fotoUrl: "", tocadaTitulo: "Acustico centro" }
-];
-
-export default async function FeedPage() {
-  let tocadas = [];
-  let errorApi = false;
-  try {
-    tocadas = await listarTocadasPorCiudad(CIUDAD_LIMA);
-  } catch {
-    errorApi = true;
-  }
-
+export default function LandingPage() {
   return (
-    <>
-      <Header ciudad="Lima" />
-      <TabNav />
+    <main className={`${workSans.className} bg-noche text-crema min-h-screen overflow-hidden`}>
+      <header className="relative z-10 flex items-center justify-between px-6 md:px-12 py-6">
+        <span className={`${bungee.className} text-xl text-amarillo`}>ESCENA PERÚ</span>
+        <Link
+          href="/login"
+          className={`${bungee.className} text-xs md:text-sm bg-fucsia text-crema px-4 py-2 rounded-full`}
+        >
+          Entrar
+        </Link>
+      </header>
 
-      <main className="px-5 py-5 space-y-3">
-        <section className="space-y-3">
-          <h2 className="text-xl">Recien lanzado</h2>
-          {LANZAMIENTOS_DEMO.map((l) => (
-            <LanzamientoCard key={l.id} lanzamiento={l} />
-          ))}
-        </section>
+      <section className="relative px-6 md:px-12 pt-8 md:pt-16 pb-20 text-center">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <svg viewBox="0 0 600 600" className="w-[140%] max-w-none opacity-40">
+            {RAYOS.map((_, i) => {
+              const angulo = (360 / RAYOS.length) * i;
+              return (
+                <line
+                  key={i}
+                  x1="300" y1="300" x2="300" y2="-100"
+                  stroke={i % 2 === 0 ? "#F5C518" : "#22C7C7"}
+                  strokeWidth="10"
+                  transform={`rotate(${angulo} 300 300)`}
+                />
+              );
+            })}
+          </svg>
+        </div>
 
-        <div className="ticket-divider" />
+        <div className="relative z-10">
+          <p className="font-medium text-cian tracking-widest uppercase text-xs md:text-sm mb-4">
+            Lima · Arequipa · Trujillo
+          </p>
+          <h1 className={`${bungee.className} text-4xl md:text-7xl leading-[1.05] text-fucsia -rotate-2 inline-block`}>
+            LA ESCENA
+            <br />
+            NO SE DETIENE
+          </h1>
+          <p className="mt-6 max-w-md mx-auto text-sm md:text-base text-crema/80">
+            El punto de encuentro de bandas, fans, organizadores y locales del Perú.
+            Tocadas confirmadas, lanzamientos y recuerdos de cada noche, en un solo lugar.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/login" className={`${bungee.className} text-sm bg-amarillo text-noche px-6 py-3 rounded-full`}>
+              Crear cuenta gratis
+            </Link>
+            <Link href="/feed" className={`${bungee.className} text-sm border-2 border-crema px-6 py-3 rounded-full`}>
+              Ver la escena
+            </Link>
+          </div>
+        </div>
+      </section>
 
-        <section className="space-y-3">
-          <h2 className="text-xl">Proximas tocadas</h2>
-          {errorApi && (
-            <p className="font-mono text-xs text-ink/50">
-              no se pudo conectar con la API. revisa que el backend este corriendo en
-              NEXT_PUBLIC_API_URL.
-            </p>
-          )}
-          {!errorApi && tocadas.length === 0 && (
-            <p className="font-mono text-xs text-ink/50">
-              todavia no hay tocadas confirmadas en Lima.
-            </p>
-          )}
-          {tocadas.map((t) => (
-            <TocadaCard key={t.id} tocada={t} />
-          ))}
-        </section>
+      <section className="relative z-10 px-6 md:px-12 pb-20 grid gap-4 md:grid-cols-3">
+        {[
+          { color: "bg-fucsia", title: "Bandas", texto: "Sube tu música, avisa tus tocadas y arma tu cartel." },
+          { color: "bg-cian", title: "Fans", texto: "Descubre shows cerca tuyo y guarda los recuerdos de cada noche." },
+          { color: "bg-naranja", title: "Organizadores", texto: "Arma festivales, invita bandas y llena tu local." }
+        ].map((item) => (
+          <div key={item.title} className={`${item.color} rounded-3xl p-6 text-noche`}>
+            <p className={`${bungee.className} text-2xl mb-2`}>{item.title}</p>
+            <p className="text-sm">{item.texto}</p>
+          </div>
+        ))}
+      </section>
 
-        <div className="ticket-divider" />
-
-        <section className="space-y-3">
-          <h2 className="text-xl">Recuerdos</h2>
-          <RecuerdosGrid fotos={RECUERDOS_DEMO} />
-        </section>
-      </main>
-
-      <BottomNav />
-    </>
+      <footer className="relative z-10 px-6 md:px-12 py-8 text-center text-crema/50 text-xs">
+        Hecho para la escena musical peruana.
+      </footer>
+    </main>
   );
 }
