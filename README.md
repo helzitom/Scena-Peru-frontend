@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Escena Peru - Frontend
 
 Next.js 14 (App Router) + TypeScript + Tailwind. Proyecto **separado** del
@@ -73,3 +74,6 @@ src/
   para que "Proximas tocadas" se actualice en vivo sin refrescar.
 - Reemplazar los arrays `_DEMO` de lanzamientos y recuerdos apenas el backend
   exponga esos endpoints.
+=======
+# Scena-Peru-frontend
+>>>>>>> 688b7809dea15424a753b911f5cf544b16c29a13
