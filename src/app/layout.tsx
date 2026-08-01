@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Inter, Space_Mono } from "next/font/google";
-import SideNav from "@/components/SideNav";
+
 // @ts-expect-error - Next.js handles global CSS imports without a declaration file
 import "./globals.css";
 
