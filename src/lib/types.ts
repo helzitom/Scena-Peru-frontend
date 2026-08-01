@@ -1,4 +1,18 @@
 export type EstadoTocada = "CONFIRMADA" | "TENTATIVA" | "CANCELADA" | "FINALIZADA";
+export type TipoUsuario = "FAN" | "BANDA" | "ORGANIZADOR";
+
+export interface RegistroPayload {
+  email: string;
+  password: string;
+  tipo: TipoUsuario;
+  ciudadId: number;
+  nombreDisplay: string;
+}
+
+export interface LoginPayload {
+  email: string;
+  password: string;
+}
 
 export interface TocadaResponse {
   id: string;
