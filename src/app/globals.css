@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-paper text-ink font-body;
+  }
+  h1, h2, h3 {
+    @apply font-display uppercase tracking-wide;
+  }
+}
+
+@layer components {
+  /* Elemento firma: divisor tipo taloncito de entrada, con muescas circulares
+     que evocan el borde perforado de un ticket de concierto. */
+  .ticket-divider {
+    position: relative;
+    height: 1px;
+    background-image: repeating-linear-gradient(
+      to right, theme('colors.sand') 0 8px, transparent 8px 16px
+    );
+    margin: 2rem 0;
+  }
+  .ticket-divider::before,
+  .ticket-divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    background: theme('colors.paper');
+    border: 1px solid theme('colors.sand');
+    border-radius: 9999px;
+    transform: translateY(-50%);
+  }
+  .ticket-divider::before { left: -8px; }
+  .ticket-divider::after { right: -8px; }
+}

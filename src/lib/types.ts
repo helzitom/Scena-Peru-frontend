@@ -1,0 +1,50 @@
+export type EstadoTocada = "CONFIRMADA" | "TENTATIVA" | "CANCELADA" | "FINALIZADA";
+
+export interface TocadaResponse {
+  id: string;
+  titulo: string;
+  ciudadId: number;
+  fecha: string;     // ISO date, ej "2026-08-08"
+  horaInicio: string; // "21:00:00"
+  estado: EstadoTocada;
+}
+
+export interface UsuarioResponse {
+  id: string;
+  email: string;
+  tipo: "FAN" | "BANDA" | "ORGANIZADOR" | "ADMIN";
+  nombreDisplay: string;
+  verificado: boolean;
+}
+
+export interface CrearTocadaPayload {
+  titulo: string;
+  descripcion?: string;
+  ciudadId: number;
+  venueId?: number;
+  ubicacionManual?: string;
+  fecha: string;
+  horaInicio: string;
+  creadorTipo: "BANDA" | "ORGANIZADOR";
+  creadorId: string;
+  precioEntrada?: number;
+  linkEntradas?: string;
+  imagenFlyerUrl?: string;
+}
+
+// Lanzamientos y recuerdos aun no tienen endpoint en el backend (modulos
+// "feed" y "recuerdos" quedaron como dominio de referencia) - se tipan aqui
+// para que el reemplazo por datos reales sea directo cuando existan.
+export interface Lanzamiento {
+  id: string;
+  bandaNombre: string;
+  titulo: string;
+  tipo: "SINGLE" | "EP" | "ALBUM" | "VIDEO";
+  publicadoHace: string;
+}
+
+export interface RecuerdoFoto {
+  id: string;
+  fotoUrl: string;
+  tocadaTitulo: string;
+}
