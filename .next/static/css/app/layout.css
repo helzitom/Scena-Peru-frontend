@@ -1150,12 +1150,15 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+
 .hover\:bg-sand\/30:hover {
   background-color: rgb(199 185 163 / 0.3);
 }
+
 .disabled\:opacity-50:disabled {
   opacity: 0.5;
 }
+
 @media (min-width: 768px) {
 
   .md\:flex {
