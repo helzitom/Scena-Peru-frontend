@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Inter, Space_Mono } from "next/font/google";
 
-// @ts-expect-error - Next.js handles global CSS imports without a declaration file
-import "./globals.css";
+import "../app/globals.css";
 
 const display = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-display" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body" });

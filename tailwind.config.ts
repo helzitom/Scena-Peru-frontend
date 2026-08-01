@@ -12,7 +12,14 @@ const config: Config = {
         coral: { DEFAULT: "#D85A30", dark: "#993C1D", light: "#F0997B" },
         amber: { DEFAULT: "#E8A23D", dark: "#854F0B", light: "#FAEEDA" },
         teal: { DEFAULT: "#1D9E75", dark: "#0F6E56", light: "#E1F5EE" },
-        sand: "#C7B9A3"
+        sand: "#C7B9A3",
+        // paleta nueva de la landing (estilo afiche chicha)
+        noche: "#1B0B2E",
+        fucsia: "#E8127A",
+        amarillo: "#F5C518",
+        cian: "#22C7C7",
+        naranja: "#F2622E",
+        crema: "#FFF6E0"
       },
       fontFamily: {
         display: ["var(--font-display)"],
