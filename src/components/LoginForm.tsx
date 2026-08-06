@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { iniciarSesion, registrarUsuario } from "@/lib/api";
+import { registrarUsuario, iniciarSesion } from "@/lib/api";
 import { TipoUsuario } from "@/lib/types";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type Modo = "login" | "registro";
 
@@ -22,6 +23,9 @@ export default function LoginForm() {
     const [estado, setEstado] = useState<{ tipo: "idle" | "cargando" | "ok" | "error"; mensaje?: string }>({
         tipo: "idle"
     });
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const destino = searchParams.get("redirect") || "/feed";
 
     async function manejarSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -29,20 +33,17 @@ export default function LoginForm() {
         try {
             if (modo === "registro") {
                 await registrarUsuario({ email, password, tipo, ciudadId: 1, nombreDisplay });
-                setEstado({ tipo: "ok", mensaje: "Cuenta creada. Ya puedes iniciar sesión." });
-                setModo("login");
+                // el registro no devuelve tokens - hacemos login automatico despues
+                await iniciarSesion({ email, password });
+                setEstado({ tipo: "ok", mensaje: "Cuenta creada. Entrando..." });
+                router.push(destino);
             } else {
                 await iniciarSesion({ email, password });
                 setEstado({ tipo: "ok", mensaje: "Sesión iniciada." });
+                router.push(destino);
             }
         } catch (err) {
-            setEstado({
-                tipo: "error",
-                mensaje:
-                    modo === "login"
-                        ? "El backend todavía no tiene login implementado (falta JWT). Prueba crear una cuenta."
-                        : (err as Error).message
-            });
+            setEstado({ tipo: "error", mensaje: (err as Error).message });
         }
     }
 

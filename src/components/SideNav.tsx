@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { cerrarSesion, obtenerSesion, SesionUsuario } from "@/lib/auth";
+import { cerrarSesion, obtenerPerfil } from "@/lib/api";
+import { haySesion } from "@/lib/auth";
+import { UsuarioResponse } from "@/lib/types";
 
 const LINKS = [
     { href: "/feed", label: "Feed" },
@@ -14,22 +16,24 @@ const LINKS = [
 export default function SideNav() {
     const pathname = usePathname();
     const router = useRouter();
-    const [sesion, setSesion] = useState<SesionUsuario | null>(null);
+    const [perfil, setPerfil] = useState<UsuarioResponse | null>(null);
 
     useEffect(() => {
-        setSesion(obtenerSesion());
+        if (haySesion()) {
+            obtenerPerfil().then(setPerfil).catch(() => setPerfil(null));
+        }
     }, []);
 
-    function salir() {
-        cerrarSesion();
-        setSesion(null);
+    async function salir() {
+        await cerrarSesion();
+        setPerfil(null);
         router.push("/");
     }
 
     return (
         <aside className="hidden md:flex md:flex-col md:w-56 md:shrink-0 md:min-h-screen border-r border-sand/60 px-6 py-8">
             <Link href="/" className="font-display text-2xl tracking-wide text-coral">
-                Scena Perú
+                Escena Perú
             </Link>
             <nav className="flex flex-col gap-1 mt-10">
                 {LINKS.map((link) => {
@@ -47,12 +51,9 @@ export default function SideNav() {
                 })}
             </nav>
 
-            {sesion ? (
-                <button
-                    onClick={salir}
-                    className="mt-auto font-mono text-xs uppercase underline underline-offset-2 text-ink/60 text-left"
-                >
-                    Cerrar sesión ({sesion.nombreDisplay})
+            {perfil ? (
+                <button onClick={salir} className="mt-auto font-mono text-xs uppercase underline underline-offset-2 text-ink/60 text-left">
+                    Cerrar sesión ({perfil.nombreDisplay})
                 </button>
             ) : (
                 <Link href="/login" className="mt-auto font-mono text-xs uppercase underline underline-offset-2 text-ink/60">

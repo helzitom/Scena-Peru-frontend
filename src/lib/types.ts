@@ -62,3 +62,9 @@ export interface RecuerdoFoto {
   fotoUrl: string;
   tocadaTitulo: string;
 }
+
+export interface TokenResponse {
+  accessToken: string;
+  refreshToken: string;
+  expiraEnSegundos: number;
+}

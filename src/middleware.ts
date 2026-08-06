@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 const RUTAS_PROTEGIDAS = ["/tocadas", "/recuerdos"];
 
 export function middleware(request: NextRequest) {
-    const sesion = request.cookies.get("escena_session");
+    const sesion = request.cookies.get("escena_auth");
     const esProtegida = RUTAS_PROTEGIDAS.some((ruta) =>
         request.nextUrl.pathname.startsWith(ruta)
     );
