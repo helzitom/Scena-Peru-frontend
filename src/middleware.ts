@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const RUTAS_PROTEGIDAS = ["/tocadas", "/recuerdos"];
+const RUTAS_PROTEGIDAS = ["/tocadas", "/recuerdos", "/publicar"];
 
 export function middleware(request: NextRequest) {
     const sesion = request.cookies.get("escena_auth");
@@ -18,5 +18,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/tocadas/:path*", "/recuerdos/:path*"]
+    matcher: ["/tocadas/:path*", "/recuerdos/:path*", "/publicar/:path*"]
 };

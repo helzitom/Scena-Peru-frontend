@@ -1,4 +1,4 @@
-import { CrearTocadaPayload, LoginPayload, RegistroPayload, TocadaResponse, TokenResponse, UsuarioResponse } from "./types";
+import { CrearTocadaPayload, LoginPayload, RegistroPayload, TocadaResponse, TokenResponse, UsuarioResponse, Ciudad } from "./types";
 import { guardarTokens, limpiarSesion, obtenerAccessToken, obtenerRefreshToken } from "./auth";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
@@ -53,6 +53,12 @@ async function intentarRefrescar(): Promise<boolean> {
 }
 
 // --- Endpoints publicos (sin token) ---
+
+export async function listarCiudades(): Promise<Ciudad[]> {
+  const res = await fetch(`${API_URL}/api/ciudades`, { cache: "no-store" });
+  return manejarRespuesta<Ciudad[]>(res);
+}
+
 
 export async function registrarUsuario(payload: RegistroPayload): Promise<UsuarioResponse> {
   const res = await fetch(`${API_URL}/api/usuarios/registro`, {
