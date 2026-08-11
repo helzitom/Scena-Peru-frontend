@@ -18,9 +18,10 @@ export interface TocadaResponse {
   id: string;
   titulo: string;
   ciudadId: number;
-  fecha: string;     // ISO date, ej "2026-08-08"
-  horaInicio: string; // "21:00:00"
+  fecha: string;
+  horaInicio: string;
   estado: EstadoTocada;
+  imagenFlyerUrl?: string;
 }
 
 export interface UsuarioResponse {
@@ -67,4 +68,10 @@ export interface TokenResponse {
   accessToken: string;
   refreshToken: string;
   expiraEnSegundos: number;
+}
+
+export interface Ciudad {
+  id: number;
+  nombre: string;
+  departamento: string;
 }

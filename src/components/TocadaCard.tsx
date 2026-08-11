@@ -14,8 +14,11 @@ function formatearFecha(fechaISO: string) {
 
 export default function TocadaCard({ tocada }: { tocada: TocadaResponse }) {
   return (
-    <article className="border border-sand/60 rounded-2xl p-4">
-      <div className="flex justify-between items-start gap-3">
+    <article className="border border-sand/60 rounded-2xl overflow-hidden">
+      {tocada.imagenFlyerUrl && (
+        <img src={tocada.imagenFlyerUrl} alt={`Flyer de ${tocada.titulo}`} className="w-full aspect-[4/5] object-cover" />
+      )}
+      <div className="p-4 flex justify-between items-start gap-3">
         <div>
           <p className="font-display tracking-wide text-lg leading-tight">{tocada.titulo}</p>
           <p className="font-mono text-xs text-ink/60 mt-1">
@@ -23,9 +26,8 @@ export default function TocadaCard({ tocada }: { tocada: TocadaResponse }) {
           </p>
         </div>
         <span
-          className={`font-mono text-[11px] uppercase px-2 py-1 rounded-md whitespace-nowrap ${
-            ESTADO_ESTILO[tocada.estado] ?? "bg-sand/40 text-ink/50"
-          }`}
+          className={`font-mono text-[11px] uppercase px-2 py-1 rounded-md whitespace-nowrap ${ESTADO_ESTILO[tocada.estado] ?? "bg-sand/40 text-ink/50"
+            }`}
         >
           {tocada.estado.toLowerCase()}
         </span>
