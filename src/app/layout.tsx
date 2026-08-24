@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Bungee, Work_Sans } from "next/font/google";
 
 // CSS is processed by Next.js at runtime and has no TypeScript module declaration.
-// @ts-expect-error -- side-effect CSS imports are handled by the Next.js bundler.
+
 import "./globals.css";
 
 const bungee = Bungee({
