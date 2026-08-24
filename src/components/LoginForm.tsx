@@ -5,6 +5,9 @@ import { registrarUsuario, iniciarSesion } from "@/lib/api";
 import { TipoUsuario } from "@/lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
 
+import { useEffect } from "react";
+import { haySesion } from "@/lib/auth";
+
 type Modo = "login" | "registro";
 
 const ROLES: { valor: TipoUsuario; label: string; color: string; bg: string }[] = [
@@ -14,7 +17,6 @@ const ROLES: { valor: TipoUsuario; label: string; color: string; bg: string }[] 
 ];
 
 export default function LoginForm() {
-    const [modo, setModo] = useState<Modo>("login");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [mostrarPassword, setMostrarPassword] = useState(false);
@@ -26,6 +28,15 @@ export default function LoginForm() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const destino = searchParams.get("redirect") || "/feed";
+
+
+    useEffect(() => {
+        if (haySesion()) {
+            router.push(destino);
+        }
+    }, []);
+
+    const [modo, setModo] = useState<Modo>("login");
 
     async function manejarSubmit(e: React.FormEvent) {
         e.preventDefault();

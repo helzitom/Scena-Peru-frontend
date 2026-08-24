@@ -1,48 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer base {
-    body {
-        @apply bg-paper text-ink font-body;
-    }
+@theme {
+    --color-abismo: #0c0c0e;
+    --color-carbón: #131315;
+    --color-plomo: #1e1e22;
+    --color-zinc: #2e2e34;
+    --color-humo: #6b6b78;
+    --color-niebla: #a8a8b8;
+    --color-arena: #d4cfc5;
+    --color-crema: #ede9e0;
 
-    h1,
-    h2,
-    h3 {
-        @apply font-display uppercase tracking-wide;
-    }
+    --color-rojo: #b84030;
+    --color-ambar: #c49030;
+    --color-verde: #3a8068;
+    --color-acero: #4a6882;
+
+    --font-bungee: var(--font-bungee);
+    --font-work: var(--font-work);
 }
 
-@layer components {
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
-    /* Elemento firma: divisor tipo taloncito de entrada, con muescas circulares
-     que evocan el borde perforado de un ticket de concierto. */
-    .ticket-divider {
-        position: relative;
-        height: 1px;
-        background-image: repeating-linear-gradient(to right, theme('colors.sand') 0 8px, transparent 8px 16px);
-        margin: 2rem 0;
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    .ticket-divider::before,
-    .ticket-divider::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        width: 16px;
-        height: 16px;
-        background: theme('colors.paper');
-        border: 1px solid theme('colors.sand');
-        border-radius: 9999px;
-        transform: translateY(-50%);
-    }
+body {
+    font-family: var(--font-work);
+    background-color: var(--color-abismo);
+    color: var(--color-crema);
+    -webkit-font-smoothing: antialiased;
+}
 
-    .ticket-divider::before {
-        left: -8px;
-    }
+::-webkit-scrollbar {
+    width: 4px;
+}
 
-    .ticket-divider::after {
-        right: -8px;
-    }
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2e2e34;
+    border-radius: 2px;
 }
