@@ -1,40 +1,77 @@
 {
   "pages": {
-    "/(app)/login/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(app)/login/page.js"
-    ],
-    "/(app)/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(app)/layout.js"
+    "/_not-found/page": [
+      "static/chunks/webpack-a7e58f286d42c694.js",
+      "static/chunks/fd9d1056-62aaf4b921c84028.js",
+      "static/chunks/23-0c40d6df9b62e9bb.js",
+      "static/chunks/main-app-a26bccaf433c207b.js",
+      "static/chunks/app/_not-found/page-94c683a891433c6f.js"
     ],
     "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
-    "/(app)/feed/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(app)/feed/page.js"
-    ],
-    "/(app)/tocadas/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(app)/tocadas/page.js"
-    ],
-    "/(app)/recuerdos/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(app)/recuerdos/page.js"
+      "static/chunks/webpack-a7e58f286d42c694.js",
+      "static/chunks/fd9d1056-62aaf4b921c84028.js",
+      "static/chunks/23-0c40d6df9b62e9bb.js",
+      "static/chunks/main-app-a26bccaf433c207b.js",
+      "static/css/0651da4a2452d65d.css",
+      "static/chunks/app/layout-f76cbc8802cb19db.js"
     ],
     "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/webpack-a7e58f286d42c694.js",
+      "static/chunks/fd9d1056-62aaf4b921c84028.js",
+      "static/chunks/23-0c40d6df9b62e9bb.js",
+      "static/chunks/main-app-a26bccaf433c207b.js",
+      "static/chunks/231-97a853da78f9480e.js",
+      "static/chunks/app/page-bf72dab55df31bd3.js"
+    ],
+    "/(app)/feed/page": [
+      "static/chunks/webpack-a7e58f286d42c694.js",
+      "static/chunks/fd9d1056-62aaf4b921c84028.js",
+      "static/chunks/23-0c40d6df9b62e9bb.js",
+      "static/chunks/main-app-a26bccaf433c207b.js",
+      "static/chunks/231-97a853da78f9480e.js",
+      "static/chunks/app/(app)/feed/page-c9e02da4bb61aa44.js"
+    ],
+    "/(app)/layout": [
+      "static/chunks/webpack-a7e58f286d42c694.js",
+      "static/chunks/fd9d1056-62aaf4b921c84028.js",
+      "static/chunks/23-0c40d6df9b62e9bb.js",
+      "static/chunks/main-app-a26bccaf433c207b.js",
+      "static/chunks/231-97a853da78f9480e.js",
+      "static/chunks/app/(app)/layout-ebc11764ac01ccd2.js"
+    ],
+    "/(app)/tocadas/page": [
+      "static/chunks/webpack-a7e58f286d42c694.js",
+      "static/chunks/fd9d1056-62aaf4b921c84028.js",
+      "static/chunks/23-0c40d6df9b62e9bb.js",
+      "static/chunks/main-app-a26bccaf433c207b.js",
+      "static/chunks/231-97a853da78f9480e.js",
+      "static/chunks/app/(app)/tocadas/page-f970fb6f5913af3a.js"
+    ],
+    "/(app)/login/page": [
+      "static/chunks/webpack-a7e58f286d42c694.js",
+      "static/chunks/fd9d1056-62aaf4b921c84028.js",
+      "static/chunks/23-0c40d6df9b62e9bb.js",
+      "static/chunks/main-app-a26bccaf433c207b.js",
+      "static/chunks/231-97a853da78f9480e.js",
+      "static/chunks/app/(app)/login/page-550ea293ae3bfac3.js"
+    ],
+    "/(app)/recuerdos/page": [
+      "static/chunks/webpack-a7e58f286d42c694.js",
+      "static/chunks/fd9d1056-62aaf4b921c84028.js",
+      "static/chunks/23-0c40d6df9b62e9bb.js",
+      "static/chunks/main-app-a26bccaf433c207b.js",
+      "static/chunks/231-97a853da78f9480e.js",
+      "static/chunks/app/(app)/recuerdos/page-4f22db2b38be7203.js"
+    ],
+    "/(app)/publicar/page": [
+      "static/chunks/webpack-a7e58f286d42c694.js",
+      "static/chunks/fd9d1056-62aaf4b921c84028.js",
+      "static/chunks/23-0c40d6df9b62e9bb.js",
+      "static/chunks/main-app-a26bccaf433c207b.js",
+      "static/chunks/44530001-2fb73cf3b2561e7d.js",
+      "static/chunks/231-97a853da78f9480e.js",
+      "static/chunks/465-6b7d55a296fa78cb.js",
+      "static/chunks/app/(app)/publicar/page-a2e4eef0af17dd45.js"
     ]
   }
 }
