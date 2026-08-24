@@ -48,3 +48,12 @@ body {
     background: #2e2e34;
     border-radius: 2px;
 }
+
+.ticket-divider {
+    height: 1px;
+    background: repeating-linear-gradient(to right,
+            transparent 0,
+            transparent 6px,
+            rgba(237, 233, 224, 0.08) 6px,
+            rgba(237, 233, 224, 0.08) 12px);
+}

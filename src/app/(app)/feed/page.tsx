@@ -9,8 +9,6 @@ import { Lanzamiento, RecuerdoFoto, TocadaResponse } from "@/lib/types";
 
 const CIUDAD_LIMA = 1;
 
-// Datos de ejemplo: "feed" y "recuerdos" aun no tienen endpoint en el backend
-// (quedaron como dominio de referencia) - se reemplazan por fetch real cuando existan.
 const LANZAMIENTOS_DEMO: Lanzamiento[] = [
     { id: "1", bandaNombre: "Suerte Campeón", titulo: "Suerte Campeón", tipo: "ALBUM", publicadoHace: "hace 1m" },
     { id: "2", bandaNombre: "Mundaka", titulo: "Sonata Tropical del Ártico", tipo: "ALBUM", publicadoHace: "hace 1y" }
@@ -36,27 +34,32 @@ export default async function FeedPage() {
             <Header ciudad="Lima" />
             <TabNav />
 
-            <main className="px-5 py-5 space-y-3">
+            <main className="bg-abismo min-h-screen px-5 py-5 space-y-6 pb-24">
+
                 <section className="space-y-3">
-                    <h2 className="text-xl">Recien lanzado</h2>
+                    <h2 className="font-[family-name:var(--font-bungee)] text-sm tracking-widest text-humo uppercase">
+                        Recién lanzado
+                    </h2>
                     {LANZAMIENTOS_DEMO.map((l) => (
                         <LanzamientoCard key={l.id} lanzamiento={l} />
                     ))}
                 </section>
 
-                <div className="ticket-divider" />
+                <div className="h-px bg-repeating-[linear-gradient(to_right,transparent_0,transparent_6px,rgba(237,233,224,0.08)_6px,rgba(237,233,224,0.08)_12px)]" />
 
                 <section className="space-y-3">
-                    <h2 className="text-xl">Proximas tocadas</h2>
+                    <h2 className="font-[family-name:var(--font-bungee)] text-sm tracking-widest text-humo uppercase">
+                        Próximas tocadas
+                    </h2>
                     {errorApi && (
-                        <p className="font-mono text-xs text-ink/50">
-                            no se pudo conectar con la API. revisa que el backend este corriendo en
+                        <p className="font-mono text-xs text-humo/60">
+                            no se pudo conectar con la API. revisa que el backend esté corriendo en
                             NEXT_PUBLIC_API_URL.
                         </p>
                     )}
                     {!errorApi && tocadas.length === 0 && (
-                        <p className="font-mono text-xs text-ink/50">
-                            todavia no hay tocadas confirmadas en Lima.
+                        <p className="font-mono text-xs text-humo/60">
+                            todavía no hay tocadas confirmadas en Lima.
                         </p>
                     )}
                     {tocadas.map((t) => (
@@ -64,12 +67,15 @@ export default async function FeedPage() {
                     ))}
                 </section>
 
-                <div className="ticket-divider" />
+                <div className="h-px bg-repeating-[linear-gradient(to_right,transparent_0,transparent_6px,rgba(237,233,224,0.08)_6px,rgba(237,233,224,0.08)_12px)]" />
 
                 <section className="space-y-3">
-                    <h2 className="text-xl">Recuerdos</h2>
+                    <h2 className="font-[family-name:var(--font-bungee)] text-sm tracking-widest text-humo uppercase">
+                        Recuerdos
+                    </h2>
                     <RecuerdosGrid fotos={RECUERDOS_DEMO} />
                 </section>
+
             </main>
 
             <BottomNav />
