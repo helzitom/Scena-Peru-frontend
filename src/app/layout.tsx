@@ -1,23 +1,36 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Inter, Space_Mono } from "next/font/google";
+import { Bungee, Work_Sans } from "next/font/google";
 
-import "../app/globals.css";
+// CSS is processed by Next.js at runtime and has no TypeScript module declaration.
+// @ts-expect-error -- side-effect CSS imports are handled by the Next.js bundler.
+import "./globals.css";
 
-const display = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-display" });
-const body = Inter({ subsets: ["latin"], variable: "--font-body" });
-const mono = Space_Mono({ weight: "400", subsets: ["latin"], variable: "--font-mono" });
+const bungee = Bungee({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bungee",
+});
+
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-work",
+});
 
 export const metadata: Metadata = {
-  title: "SCENA PE",
-  description: "Bandas, tocadas y recuerdos de la escena musical peruana"
+  title: "Subsuelo - Encuentra tocadas en tu ciudad",
+  description:
+    "El punto de encuentro de bandas, fans y organizadores del under peruano.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="es">
-      <body className={`${display.variable} ${body.variable} ${mono.variable}`}>
-        {children}
-      </body>
+    <html lang="es" className={`${bungee.variable} ${workSans.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
