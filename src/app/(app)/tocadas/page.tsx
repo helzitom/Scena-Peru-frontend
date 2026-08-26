@@ -16,25 +16,38 @@ export default function TocadasPage() {
   const [cargando, setCargando] = useState(true);
   const [errorApi, setErrorApi] = useState(false);
 
+  
   useEffect(() => {
-    const cargarTocadas = async () => {
-      try {
-        setCargando(true);
-        setErrorApi(false);
+  const cargarTocadas = async () => {
+    try {
+      setCargando(true);
+      setErrorApi(false);
 
-        const data = await listarTocadasPorCiudad(CIUDAD_LIMA);
+      console.log(
+        "Consultando tocadas:",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/tocadas?ciudadId=${CIUDAD_LIMA}`
+      );
 
-        setTocadas(data);
-      } catch (error) {
-        console.error("Error cargando tocadas:", error);
-        setErrorApi(true);
-      } finally {
-        setCargando(false);
+      const data = await listarTocadasPorCiudad(CIUDAD_LIMA);
+
+      console.log("Tocadas recibidas:", data);
+
+      setTocadas(data);
+    } catch (error) {
+      console.error("Error cargando tocadas:", error);
+
+      if (error instanceof Error) {
+        console.error("Mensaje:", error.message);
       }
-    };
 
-    cargarTocadas();
-  }, []);
+      setErrorApi(true);
+    } finally {
+      setCargando(false);
+    }
+  };
+
+  cargarTocadas();
+}, []);
 
   return (
     <>
