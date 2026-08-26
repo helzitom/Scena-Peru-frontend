@@ -33,7 +33,7 @@ export default function SideNav() {
     return (
         <aside className="hidden md:flex md:flex-col md:w-56 md:shrink-0 md:min-h-screen border-r border-sand/60 px-6 py-8">
             <Link href="/" className="font-display text-2xl tracking-wide text-coral">
-                Escena Perú
+                SUBSUELO
             </Link>
             <nav className="flex flex-col gap-1 mt-10">
                 {LINKS.map((link) => {
