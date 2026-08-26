@@ -102,8 +102,18 @@ export async function obtenerPerfil(): Promise<UsuarioResponse> {
   return manejarRespuesta<UsuarioResponse>(res);
 }
 
-export async function listarTocadasPorCiudad(ciudadId: number): Promise<TocadaResponse[]> {
-  const res = await fetchAutenticado(`${API_URL}/api/tocadas?ciudadId=${ciudadId}`);
+export async function listarTocadasPorCiudad(
+  ciudadId: number
+): Promise<TocadaResponse[]> {
+  const url = `${API_URL}/api/tocadas?ciudadId=${ciudadId}`;
+
+  console.log("GET TOCADAS:", url);
+  console.log("ACCESS TOKEN:", obtenerAccessToken());
+
+  const res = await fetchAutenticado(url);
+
+  console.log("RESPUESTA TOCADAS:", res.status, res.statusText);
+
   return manejarRespuesta<TocadaResponse[]>(res);
 }
 
