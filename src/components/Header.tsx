@@ -26,7 +26,7 @@ export default function Header({ ciudad = "Lima" }: { ciudad?: string }) {
   return (
     <header className="bg-coral text-paper px-5 md:px-10 pt-5 md:pt-8 pb-6 rounded-b-3xl md:rounded-none">
       <div className="flex items-center justify-between">
-        <span className="font-mono text-xs tracking-widest uppercase">Escena · {ciudad}</span>
+        <span className="font-mono text-xs tracking-widest uppercase">Subsuelo · {ciudad}</span>
         <div className="flex items-center gap-4">
           {perfil ? (
             <button onClick={salir} className="font-mono text-xs underline underline-offset-2">

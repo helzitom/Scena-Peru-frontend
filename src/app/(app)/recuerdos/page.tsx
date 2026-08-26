@@ -10,7 +10,7 @@ const RECUERDOS_DEMO: RecuerdoFoto[] = [
   { id: "3", fotoUrl: "", tocadaTitulo: "Acustico centro" },
   { id: "4", fotoUrl: "", tocadaTitulo: "Cumbia en el parque" },
   { id: "5", fotoUrl: "", tocadaTitulo: "Metal fest Lima" },
-  { id: "6", fotoUrl: "", tocadaTitulo: "Huayno nocturno" }
+  { id: "6", fotoUrl: "", tocadaTitulo: "Huayno nocturno" },
 ];
 
 export default function RecuerdosPage() {
@@ -19,11 +19,16 @@ export default function RecuerdosPage() {
       <Header ciudad="Lima" />
       <TabNav />
 
-      <main className="px-5 py-5 space-y-3">
-        <h2 className="text-xl">Recuerdos de la escena</h2>
-        <p className="font-mono text-xs text-ink/50">
-          fotos compartidas por fans y bandas en cada tocada
-        </p>
+      <main className="bg-abismo min-h-screen px-5 py-5 space-y-4 pb-24">
+        <div>
+          <h2 className="font-[family-name:var(--font-bungee)] text-sm tracking-widest text-humo uppercase">
+            Recuerdos de la escena
+          </h2>
+          <p className="font-mono text-[10px] text-humo/50 mt-1">
+            fotos compartidas por fans y bandas en cada tocada
+          </p>
+        </div>
+
         <RecuerdosGrid fotos={RECUERDOS_DEMO} />
       </main>
 

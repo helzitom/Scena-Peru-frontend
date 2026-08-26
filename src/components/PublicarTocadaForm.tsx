@@ -130,7 +130,7 @@ export default function PublicarTocadaForm() {
                     value={descripcion}
                     onChange={(e) => setDescripcion(e.target.value)}
                     rows={3}
-                    placeholder="Cuéntale a la escena de qué se trata"
+                    placeholder="Cuéntale a la gente de qué se trata"
                     className="w-full mt-1.5 border border-sand/60 rounded-xl px-3.5 py-2.5 bg-white/60 outline-none focus:border-coral focus:ring-2 focus:ring-coral/20"
                 />
             </div>
