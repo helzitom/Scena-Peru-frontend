@@ -17,10 +17,23 @@ export default function TocadasPage() {
   const [errorApi, setErrorApi] = useState(false);
 
   useEffect(() => {
-    listarTocadasPorCiudad(CIUDAD_LIMA)
-      .then(setTocadas)
-      .catch(() => setErrorApi(true))
-      .finally(() => setCargando(false));
+    const cargarTocadas = async () => {
+      try {
+        setCargando(true);
+        setErrorApi(false);
+
+        const data = await listarTocadasPorCiudad(CIUDAD_LIMA);
+
+        setTocadas(data);
+      } catch (error) {
+        console.error("Error cargando tocadas:", error);
+        setErrorApi(true);
+      } finally {
+        setCargando(false);
+      }
+    };
+
+    cargarTocadas();
   }, []);
 
   return (
@@ -33,6 +46,7 @@ export default function TocadasPage() {
           <h2 className="font-[family-name:var(--font-bungee)] text-sm tracking-widest text-humo uppercase">
             Tocadas en tu ciudad
           </h2>
+
           <Link
             href="/publicar"
             className="font-[family-name:var(--font-bungee)] text-xs bg-rojo text-crema px-4 py-2 rounded whitespace-nowrap hover:bg-rojo/85 transition-colors"
@@ -42,7 +56,9 @@ export default function TocadasPage() {
         </div>
 
         {cargando && (
-          <p className="font-mono text-xs text-humo/60">Cargando...</p>
+          <p className="font-mono text-xs text-humo/60">
+            Cargando...
+          </p>
         )}
 
         {!cargando && errorApi && (
@@ -56,6 +72,7 @@ export default function TocadasPage() {
             <p className="font-mono text-xs text-humo/60">
               todavía no hay tocadas confirmadas en tu ciudad.
             </p>
+
             <Link
               href="/publicar"
               className="font-[family-name:var(--font-bungee)] text-xs bg-rojo text-crema px-5 py-2.5 rounded inline-block hover:bg-rojo/85 transition-colors"
@@ -65,11 +82,16 @@ export default function TocadasPage() {
           </div>
         )}
 
-        <div className="space-y-3">
-          {tocadas.map((t) => (
-            <TocadaCard key={t.id} tocada={t} />
-          ))}
-        </div>
+        {!cargando && !errorApi && tocadas.length > 0 && (
+          <div className="space-y-3">
+            {tocadas.map((tocada) => (
+              <TocadaCard
+                key={tocada.id}
+                tocada={tocada}
+              />
+            ))}
+          </div>
+        )}
       </main>
 
       <BottomNav />
